@@ -1,0 +1,49 @@
+.main{
+    padding: 60px 30px;
+}
+
+.main picture{
+    display: inline-block;
+
+    position: relative;
+}
+
+.main picture img:first-of-type{
+    max-width: 400px;
+}
+
+.main picture img:not(:first-of-type){
+    max-width: 50px;
+    max-height: 70px;
+
+    position: absolute;
+    top: 78px;
+    right: 26px;
+}
+
+/* valores por calc para seguir o padrão trazido pela cabeça */
+
+.main picture img:nth-of-type(3){
+    top: calc(78px + 48px);
+    right: calc(26px + 23px);
+}
+
+.main picture img:nth-of-type(4){
+    top: calc(78px + 112px);
+    right: calc(26px - 9px);
+}
+
+.main picture img:nth-of-type(5){
+    top: calc(78px + 112px);
+    right: calc(26px + 22px);
+}
+
+.main picture img:nth-of-type(6){
+    top: calc(78px + 64px);
+    right: calc(26px - 10px);
+}
+
+.main picture img:nth-of-type(7){
+    top: calc(78px + 64px);
+    right: calc(26px + 24px);
+}
