@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+@import 'header.css';
+@import 'main.css';
 
 :root{
+    --fontPrincipal: 'Inter', sans-serif;
+
     --grey1: #F5F7FA;
     --grey2: #E6EAF0;
     --grey3: #CED3D9;
@@ -12,7 +17,16 @@
     --grey9: #474D59;
     --grey10: #363B47;
     --grey11: #242833;
-    --grey12: #0B0C12;
+    --grey12: #1a1d27;
+    --grey13: #0B0C12;
+
+    --blue1: #0E2467;
+    --blue2: #A1B7FB;
+}
+
+body.dark{
+    --grey1: #0B0C12;
+    --grey2: #161922;
 }
 
 *{
@@ -24,22 +38,74 @@
     box-sizing: border-box;
 }
 
-img{
-    width: 100%;
+body{
+    font-family: var(--fontPrincipal);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.3rem;
+
+    background-color: var(--grey1);
 }
 
 a{
     display: block;
 }
 
-@media (min-width: 480px){
+.width-limit{
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
+.title{
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 3.125rem;
+
+    color: var(--grey11);
+}
+
+.sub-tile{
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+    color: var(--grey10);
+}
+
+.links{
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 2rem;
+
+    padding: 5px;
+    color: var(--grey9);
+}
+
+.button{
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 2rem;
+
+    background-color: var(--blue1);
+    color: var(--blue2);
+}
+
+input[type="checkbox"]{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 @media (min-width: 768px){
 
-}
+    .title{
+        font-size: 3rem;
+        line-height: 3.75rem;
+    }
 
-@media (min-width: 1024px){
-    
+    .sub-tile{
+        font-size: 2.5rem;
+        line-height: 3.125rem;
+    }
 }
