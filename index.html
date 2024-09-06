@@ -7,16 +7,40 @@
     <link rel="stylesheet" href="Assets/Styles/style.css">
 </head>
 <body>
-    <header class="header">
-        <h1>Jogo da Forca</h1>
-        <a href="#">Dev ►</a>
-    </header>
+    <div class="background-header">
+        <header class="header width-limit">
+            <h1 class="title">Jogo da Forca</h1>
+            <ul>
+                <li>
+                    <a class="links" href="#">Dev ►</a>
+                </li>
+                <li>
+                    <input type="checkbox" id="checkbox" class="input">
+                    <label for="checkbox">
+                        <div></div>
+                    </label>
+                </li>
+            </ul>
+            <div class="header__menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </header>
+    </div>
 
-    <main class="main">
-
+    <main class="main width-limit">
+        <picture>
+            <img src="Assets/Images/Forca suporte.svg" alt="Forca">
+            <img src="Assets/Images/img1.svg" alt="">
+            <img src="Assets/Images/img2.svg" alt="">
+            <img src="Assets/Images/img3.svg" alt="">
+            <img src="Assets/Images/img4.svg" alt="">
+            <img src="Assets/Images/img5.svg" alt="">
+            <img src="Assets/Images/img6.svg" alt="">
+        </picture>
     </main>
     
-    <script src="Assets/Javascript/script.js"></script>
-    <script src="Assets/Javascript/words.js"></script>
+    <script type="module" src="Assets/Javascript/script.js"></script>
 </body>
 </html>
