@@ -24,6 +24,13 @@
     z-index: 1;
     top: 100%;
     right: 0;
+
+    transform: translateX(100%);
+    transition: all 0.2s ease-in-out;
+}
+
+.header ul li{
+    display: grid;
 }
 
 .header ul li > label{
@@ -70,8 +77,10 @@
     background-color: var(--grey5);
 }
 
-@media (min-width: 480px){
+/* classes com javascript */
 
+.header ul.openMenu{
+    transform: translateX(0);
 }
 
 @media (min-width: 768px){
@@ -87,8 +96,4 @@
     .header__menu{
         display: none;
     }
-}
-
-@media (min-width: 1024px){
-    
 }
