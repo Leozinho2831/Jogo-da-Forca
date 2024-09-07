@@ -178,3 +178,15 @@ function initGame(){
 }
 
 initGame();
+
+function createButtons(){
+    const containerButtons = document.querySelector('.js-containerButtons');
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    alphabet.split('').forEach((letter) => {
+        containerButtons.innerHTML += 
+        `<button class="buttons-letters">${letter}</button>`;
+    });
+}
+
+createButtons()
