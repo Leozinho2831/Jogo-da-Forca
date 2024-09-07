@@ -208,6 +208,8 @@ function createButtons(){
         };
     });
 }
+
+let imagesExist = 0;
     
 function clickedLetter(event){
     const lettersForca = document.querySelectorAll('.js-letter');
@@ -216,10 +218,9 @@ function clickedLetter(event){
     const classButtonCorrect = 'correct';
     const classButtonIncorrect = 'incorrect';
 
-    let imagesExist = 0;
-
     lettersForca.forEach((letterForca) => {
         if(letterForca.textContent == buttonClicked.textContent){
+            console.log('sla')
             letterForca.classList.add(classLetter)
             buttonClicked.classList.add(classButtonCorrect);
         }
@@ -237,7 +238,11 @@ function clickedLetter(event){
             `<img src="Assets/Images/img${imagesExist} dark.svg" alt="image${imagesExist}"></img>`;;
         } else {
             containerImages.innerHTML += 
-            `<img src="Assets/Images/img${imagesExist} dark.svg" alt="image${imagesExist}"></img>`;
+            `<img src="Assets/Images/img${imagesExist}.svg" alt="image${imagesExist}"></img>`;
+        }
+
+        if(imagesExist == 6){
+            
         }
     }
 }
