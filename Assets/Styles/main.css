@@ -114,17 +114,114 @@
     margin: 5rem 0 0 0;
 }
 
+.main__you{
+    width: 100%;
+    height: 100vh;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.main__you h1{
+    font-size: 4rem;
+    line-height: 5rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.main__you button{
+    background-color: transparent;
+    color: var(--green3);
+
+    font-size: 2.5rem;
+    line-height: 3.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+
+    margin: 5rem 0 0 0;
+}
+
+.main__you button:hover{
+    opacity: 0.95;
+}
+
+.you-close{
+    cursor: pointer;
+    padding: 10px;
+
+    position: absolute;
+    z-index: 2;
+    top: 6%;
+    right: 4%;
+}
+
+.you-close div{
+    width: 60px;
+    height: 5px;
+    background-color: #ffffff;
+}
+
+.you-close div:first-of-type{
+    transform: rotate(46deg) translate(5px, 2px);
+}
+
+.you-close div:last-of-type{
+    transform: rotate(-45deg) translate(-1px, 0);
+}
+
+.youWin{
+    display: flex;
+}
+
+.youLost{
+    display: flex;
+}
+
+/* classes com javascript */
+
+.youWin{
+    display: flex;
+}
+
+.youLost{
+    display: flex;
+}
+
+.youWin h1{
+    color: var(--green-titleNotification);
+}
+
+.youLost h1{
+    color: var(--red-titleNotification);
+}
+
+
 @media (min-width: 480px){
 
     .container-word div{
         gap: 1.5rem;
     }
-}
 
-@media (min-width: 768px){
-
-}
-
-@media (min-width: 1024px){
-
+    .main__you h1{
+        font-size: 5rem;
+        line-height: 6.25rem;
+    }
+    
+    .main__you button{
+        font-size: 3rem;
+        line-height: 4rem;
+    
+        margin: 5rem 0 0 0;
+    }
 }
