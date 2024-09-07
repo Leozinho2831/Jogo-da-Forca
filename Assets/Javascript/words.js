@@ -22,7 +22,7 @@ const words = [
     { word: "carro", clue: "Veículo automotor" },
     { word: "praia", clue: "Faixa de areia junto ao mar" },
     { word: "internet", clue: "Rede mundial de computadores" },
-    { word: "futebol", clue: "Esporte com bola e gols" },
+    { word: "futebol", clue: "Esporte com bola" },
     { word: "guitarra", clue: "Instrumento musical de cordas" },
     { word: "barco", clue: "Pequena embarcação" },
     { word: "Wi-Fi", clue: "Tecnologia sem fio para comunicação" },
