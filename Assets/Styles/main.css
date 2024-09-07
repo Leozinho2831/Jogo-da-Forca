@@ -70,7 +70,11 @@
 }
 
 .main__init-game,
-.main__option-game{
+.main__option-game,
+.main__word{
+    opacity: 0;
+    animation: removeSection 0.5s forwards;
+    transform: translateX(-50px);
     display: none;
 }
 
@@ -83,6 +87,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    transform: translateX(0);
+    animation: visibilySection 0.5s forwards;
 }
 
 .container-word div{
