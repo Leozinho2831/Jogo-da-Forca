@@ -89,8 +89,6 @@ function initGame(){
         const clueText = document.querySelector('.js-clue');
 
         if(itemClick == standardGameButton){
-            createButtons();
-            // necessário chamar a função a parte para não chamar ela novamente e quebrar código
             const wordSelect = getWord();
             const wordSelectLowerCase = wordSelect.word.toLowerCase();
             const wordLetters = wordSelectLowerCase.split(/(?!$)/);
@@ -102,18 +100,19 @@ function initGame(){
                 if(index == 0){
                     wordContainer.innerHTML += 
                     `<div>
-                        <span class="letter" word:${wordLetter}>${wordLetter}</span>
+                        <span class="letter js-letter">${wordLetter}</span>
                     </div>`;
                 } else if(wordLetter === ' '){
                     wordContainer.innerHTML += `<div></div>`
                 } else {
                     wordContainer.children[wordContainer.children.length - 1].innerHTML += 
-                    `<span class="letter" word:${wordLetter}>${wordLetter}</span>`;
+                    `<span class="letter js-letter">${wordLetter}</span>`;
                 }
             });
 
-        } else if(inputWord.value && inputClue.value && Number(inputWord.value) === NaN){
             createButtons();
+
+        } else if(inputWord.value && inputClue.value && Number(inputWord.value) === NaN){
             
             sections[1].classList.remove(classSectionActive);
             sections[2].classList.add(classSectionActive);
@@ -129,18 +128,19 @@ function initGame(){
                 if(index == 0){
                     wordContainer.innerHTML += 
                     `<div>
-                        <span class="letter" word:${wordLetter}>${wordLetter}</span>
+                        <span class="letter js-letter" word:${wordLetter}>${wordLetter}</span>
                     </div>`;
                 } else if(wordLetter === ' '){
                     wordContainer.innerHTML += `<div></div>`
                 } else {
                     wordContainer.children[wordContainer.children.length - 1].innerHTML += 
-                    `<span class="letter" word:${wordLetter}>${wordLetter}</span>`;
+                    `<span class="letter js-letter">${wordLetter}</span>`;
                 }
             });
 
             inputWord.value = '';
             inputClue.value = '';
+            createButtons();
             
         } else if(inputWord.value == '' || inputClue.value == ''){
 
@@ -188,26 +188,56 @@ function initGame(){
 
 initGame();
 
+
 function createButtons(){
     const containerButtons = document.querySelector('.js-containerButtons');
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
+    
     containerButtons.innerHTML = '';
-
+    
     alphabet.split('').forEach((letter) => {
         containerButtons.innerHTML += 
-        `<button class="buttons-letters js-buttonsClick" onclick="">${letter}</button>`;
+        `<button class="buttons-letters js-buttonsClick">${letter}</button>`;
     });
-
+    
     const buttons = document.querySelectorAll('.js-buttonsClick');
-
-    buttons.forEach((button) => {
-        button.onclick = () => {
-            clickedLetter(`${button.textContent}`);
+    
+    buttons.forEach((buttonLetter) => {
+        buttonLetter.onclick = (event) => {
+            clickedLetter(event);
         };
     });
 }
+    
+function clickedLetter(event){
+    const lettersForca = document.querySelectorAll('.js-letter');
+    const buttonClicked = event.target;
+    const classLetter = 'correctLetter';
+    const classButtonCorrect = 'correct';
+    const classButtonIncorrect = 'incorrect';
 
-function clickedLetter(letter){
-    console.log(letter); 
+    let imagesExist = 0;
+
+    lettersForca.forEach((letterForca) => {
+        if(letterForca.textContent == buttonClicked.textContent){
+            letterForca.classList.add(classLetter)
+            buttonClicked.classList.add(classButtonCorrect);
+        }
+    });
+
+    if(!buttonClicked.classList.contains(classButtonCorrect)){
+        buttonClicked.classList.add(classButtonIncorrect);
+        imagesExist++
+    
+        const containerImages = document.querySelector('.js-forcaContainer');
+        const classBody = 'dark';
+    
+        if(document.body.classList.contains(classBody)){
+            containerImages.innerHTML += 
+            `<img src="Assets/Images/img${imagesExist} dark.svg" alt="image${imagesExist}"></img>`;;
+        } else {
+            containerImages.innerHTML += 
+            `<img src="Assets/Images/img${imagesExist} dark.svg" alt="image${imagesExist}"></img>`;
+        }
+    }
 }
