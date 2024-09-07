@@ -24,10 +24,8 @@
 
     --blue1: #0E2467;
     --blue2: #A1B7FB;
-    --red1: #;
-    --red2: #;
-    --green1: #;
-    --green2: #;
+    --green1: #035835;
+    --green2: #B9FDE1;
 
     --shadow: rgba(0, 0, 0, 0.1);
 }
@@ -41,8 +39,8 @@ body.dark{
 
     --blue1: #8aa2e7;
     --blue2: #0E2467;
-    --green1: #;
-    --green2: #;
+    --green1: #B9FDE1;
+    --green2: #035835;
 
     --shadow: rgba(255, 255, 255, 0.1);
 }
