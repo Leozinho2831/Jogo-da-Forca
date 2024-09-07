@@ -6,7 +6,7 @@
 
 :root{
     --fontPrincipal: 'Inter', sans-serif;
-    --fontWord: 'Roboto Mono', monospace;
+    --fontMonospace: 'Roboto Mono', monospace;
 
     --grey1: #F5F7FA;
     --grey2: #E6EAF0;
@@ -24,8 +24,27 @@
 
     --blue1: #0E2467;
     --blue2: #A1B7FB;
+    --red1: #;
+    --red2: #;
+    --green1: #;
+    --green2: #;
 
     --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.dark{
+    --grey1: #0B0C12;
+    --grey2: #161922;
+    --grey9: #7E838C;
+    --grey11: #B2B8BF;
+    --grey12: #CED3D9;
+
+    --blue1: #8aa2e7;
+    --blue2: #0E2467;
+    --green1: #;
+    --green2: #;
+
+    --shadow: rgba(255, 255, 255, 0.1);
 }
 
 @keyframes visibilySection{
@@ -52,19 +71,6 @@
         transform: translateX(-50px);
         display: none;
     }
-}
-
-body.dark{
-    --grey1: #0B0C12;
-    --grey2: #161922;
-    --grey9: #7E838C;
-    --grey11: #B2B8BF;
-    --grey12: #CED3D9;
-
-    --blue1: #8aa2e7;
-    --blue2: #0E2467;
-
-    --shadow: rgba(255, 255, 255, 0.1);
 }
 
 *{
@@ -97,8 +103,14 @@ label, input{
     width: 100%;
 }
 
+input[type="checkbox"]{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
 .width-limit{
-    max-width: 1000px;
+    max-width: 1050px;
     margin: 0 auto;
 }
 
@@ -142,7 +154,7 @@ label, input{
 
 .button{
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
     line-height: 1.625rem;
 
@@ -157,7 +169,8 @@ label, input{
     transition: all 0.15s ease-in-out;
 }
 
-.button:hover{
+.button:hover,
+.buttons-letters:hover{
     opacity: 0.95;
 }
 
@@ -185,7 +198,7 @@ label, input{
     display: inline-block;
 
     font-size: 2rem;
-    font-family: var(--fontWord);
+    font-family: var(--fontMonospace);
     font-weight: 500;
     line-height: 2.5rem;
 
@@ -196,14 +209,33 @@ label, input{
     pointer-events: none;
 }
 
-.letter.correct{
-    color: var(--grey11);
+.buttons-letters{
+    font-family: var(--fontMonospace);
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 2.2rem;
+
+    padding: 1rem;
+
+    border-radius: 5px;
+    background-color: var(--blue1);
+    color: var(--blue2);
 }
 
-input[type="checkbox"]{
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+/* classes com javascript */
+
+.buttons-letters.incorrect{
+    background-color: var(--);
+    color: var(--);
+}
+
+.buttons-letters.correct{
+    background-color: var(--green1);
+    color: var(--green2);
+}
+
+.letter.correctLetter{
+    color: var(--grey11);
 }
 
 @media (min-width: 480px){
@@ -211,6 +243,13 @@ input[type="checkbox"]{
     .letter{
         font-size: 3.5rem;
         line-height: 4.5rem;
+    }
+
+    .buttons-letters{
+        font-size: 2rem;
+        line-height: 2.5rem;
+
+        border-radius: 5px;
     }
 }
 
