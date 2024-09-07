@@ -26,8 +26,12 @@
     --blue2: #A1B7FB;
     --green1: #035835;
     --green2: #B9FDE1;
+    --green3: #229E6B;
+    --red-titleNotification: #E44057;
+    --green-titleNotification: #b0f5d8;
 
     --shadow: rgba(0, 0, 0, 0.1);
+    --background-notification: rgba(0, 0, 0, 0.95);
 }
 
 body.dark{
