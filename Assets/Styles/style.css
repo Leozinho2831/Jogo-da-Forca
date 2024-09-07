@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 @import 'header.css';
 @import 'main.css';
 
 :root{
     --fontPrincipal: 'Inter', sans-serif;
+    --fontWord: 'Roboto Mono', monospace;
 
     --grey1: #F5F7FA;
     --grey2: #E6EAF0;
@@ -22,11 +24,21 @@
 
     --blue1: #0E2467;
     --blue2: #A1B7FB;
+
+    --shadow: rgba(0, 0, 0, 0.1);
 }
 
 body.dark{
     --grey1: #0B0C12;
     --grey2: #161922;
+    --grey9: #7E838C;
+    --grey11: #B2B8BF;
+    --grey12: #CED3D9;
+
+    --blue1: #8aa2e7;
+    --blue2: #0E2467;
+
+    --shadow: rgba(255, 255, 255, 0.1);
 }
 
 *{
@@ -36,6 +48,10 @@ body.dark{
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
+}
+
+html, body{
+    overflow-x: hidden;
 }
 
 body{
@@ -51,8 +67,12 @@ a{
     display: block;
 }
 
+label, input{
+    width: 100%;
+}
+
 .width-limit{
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -61,14 +81,27 @@ a{
     font-weight: 600;
     line-height: 3.125rem;
 
-    color: var(--grey11);
+    color: var(--grey12);
 }
 
-.sub-tile{
+.sub-title{
     font-size: 2rem;
     font-weight: 500;
     line-height: 2.5rem;
-    color: var(--grey10);
+
+    color: var(--grey11);
+}
+
+.sub-title b{
+    font-weight: 600;
+}
+
+.text{
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 2rem;
+
+    color: var(--grey9);
 }
 
 .links{
@@ -82,19 +115,77 @@ a{
 }
 
 .button{
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 600;
     text-transform: uppercase;
-    line-height: 2rem;
+    line-height: 1.625rem;
 
+    padding: 15px 30px;
+
+    border-radius: 5px;
     background-color: var(--blue1);
     color: var(--blue2);
+
+    cursor: pointer;
+    box-sizing: 0 1px 2px var(--shadow);
+    transition: all 0.15s ease-in-out;
+}
+
+.button:hover{
+    opacity: 0.95;
+}
+
+.inputs{
+    width: 100%;
+    height: 40px;
+    margin: 0.875rem 0 0.5rem 0;
+    padding: 10px;
+
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    border-radius: 5px;
+    background-color: var(--grey1);
+    color: var(--grey11);
+    border: 2px solid var(--grey9);
+}
+
+.inputs:focus{
+    outline: none;
+    border: 2px solid var(--grey12);
+}
+
+.letter{
+    display: inline-block;
+
+    font-size: 2rem;
+    font-family: var(--fontWord);
+    font-weight: 500;
+    line-height: 2.5rem;
+
+    border-bottom: 4px solid var(--grey12);
+    color: transparent;
+    
+    user-select: none;
+    pointer-events: none;
+}
+
+.letter.correct{
+    color: var(--grey11);
 }
 
 input[type="checkbox"]{
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+}
+
+@media (min-width: 480px){
+
+    .letter{
+        font-size: 3.5rem;
+        line-height: 4.5rem;
+    }
 }
 
 @media (min-width: 768px){
@@ -104,8 +195,18 @@ input[type="checkbox"]{
         line-height: 3.75rem;
     }
 
-    .sub-tile{
+    .sub-title{
         font-size: 2.5rem;
         line-height: 3.125rem;
+    }
+
+    .button{
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .letter{
+        font-size: 4rem;
+        line-height: 5.2rem;
     }
 }
