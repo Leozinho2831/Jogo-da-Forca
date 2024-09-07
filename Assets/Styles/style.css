@@ -28,6 +28,32 @@
     --shadow: rgba(0, 0, 0, 0.1);
 }
 
+@keyframes visibilySection{
+    0%{
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+        display: flex;
+    }
+}
+
+@keyframes removeSection{
+    0%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100%{
+        opacity: 0;
+        transform: translateX(-50px);
+        display: none;
+    }
+}
+
 body.dark{
     --grey1: #0B0C12;
     --grey2: #161922;
