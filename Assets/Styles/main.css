@@ -1,14 +1,21 @@
 .main{
     padding: 60px 30px;
-
+}
+.flex-div{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 30px;
+}
+
+.flex-div section{
+    flex-grow: 2;
 }
 
 .main picture{
     display: inline-block;
 
+    align-self: flex-start;
     position: relative;
 }
 
