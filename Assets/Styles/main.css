@@ -1,5 +1,9 @@
 .main{
     padding: 60px 30px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .main picture{
@@ -46,4 +50,59 @@
 .main picture img:nth-of-type(7){
     top: calc(78px + 64px);
     right: calc(26px + 24px);
+}
+
+.main__init-game,
+.main__game,
+.main__option-game div,
+.main__word{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.main__word p{
+    display: inline-block;
+}
+
+.main__init-game,
+.main__option-game{
+    display: none;
+}
+
+.main__option-game p{
+    margin: 1.125rem 0 0 0;
+}
+
+.activeSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-word div{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    white-space: nowrap;
+}
+
+@media (min-width: 480px){
+
+    .container-word div{
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 768px){
+
+}
+
+@media (min-width: 1024px){
+
 }
