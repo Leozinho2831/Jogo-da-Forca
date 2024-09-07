@@ -196,10 +196,18 @@ function createButtons(){
 
     alphabet.split('').forEach((letter) => {
         containerButtons.innerHTML += 
-        `<button class="buttons-letters" onclick="clickedLetter(${letter})">${letter}</button>`;
+        `<button class="buttons-letters js-buttonsClick" onclick="">${letter}</button>`;
+    });
+
+    const buttons = document.querySelectorAll('.js-buttonsClick');
+
+    buttons.forEach((button) => {
+        button.onclick = () => {
+            clickedLetter(`${button.textContent}`);
+        };
     });
 }
 
-// function clickedLetter(letter){
-
-// }
+function clickedLetter(letter){
+    console.log(letter); 
+}
