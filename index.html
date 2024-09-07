@@ -30,7 +30,7 @@
     </div>
 
     <main class="main width-limit js-main">
-        <picture>
+        <picture class="js-forcaContainer">
             <img src="Assets/Images/Forca suporte.svg" alt="Forca">
             <img src="Assets/Images/img1.svg" alt="Cabeça">
             <img src="Assets/Images/img2.svg" alt="Tronco">
@@ -55,8 +55,12 @@
                     <h2 class="sub-title"></h2>
                     <p class="text">Escolha você mesmo quais palavras deseja utilizar para jogar com seu amigo.</p>
 
-                    <label for="word" class="text">Palavra<input type="text" id="word" class="inputs"></label>
-                    <label for="clue" class="text">Dica<input type="text" id="clue" class="inputs"></label>
+                    <label for="word" class="text">
+                        Palavra<input type="text" id="word" class="inputs js-inputWord">
+                    </label>
+                    <label for="clue" class="text">
+                        Dica<input type="text" pattern="[A-Za-z]+" id="clue" class="inputs js-inputClue">
+                    </label>
                     <button class="button js-choiceButton">Iniciar seu jogo</button>
                 </div>
             </section>
