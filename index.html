@@ -21,7 +21,7 @@
                     </label>
                 </li>
             </ul>
-            <div class="header__menu">
+            <div class="header__menu js-menu">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -29,7 +29,7 @@
         </header>
     </div>
 
-    <main class="main width-limit">
+    <main class="main width-limit js-main">
         <picture>
             <img src="Assets/Images/Forca suporte.svg" alt="Forca">
             <img src="Assets/Images/img1.svg" alt="Cabeça">
@@ -39,6 +39,38 @@
             <img src="Assets/Images/img5.svg" alt="Braço direito">
             <img src="Assets/Images/img6.svg" alt="Braço esquerdo">
         </picture>
+        <section class="main__game">
+            <section class="main__init-game js-section activeSection">
+                <h1 class="title">Novo Jogo</h1>
+                <button class="button js-startButton">Começar</button>
+            </section>
+            <section class="main__option-game js-section">
+                <h1 class="title">Escolha tipo de jogo</h1>
+                <div>
+                    <h2 class="sub-title"></h2>
+                    <p class="text">Com mais de 100 opções de palavras escolhidas pelo algoritmo para você jogar.</p>
+                    <button class="button js-standardButton">Iniciar jogo padrão</button>
+                </div>
+                <div>
+                    <h2 class="sub-title"></h2>
+                    <p class="text">Escolha você mesmo quais palavras deseja utilizar para jogar com seu amigo.</p>
+
+                    <label for="word" class="text">Palavra<input type="text" id="word" class="inputs"></label>
+                    <label for="clue" class="text">Dica<input type="text" id="clue" class="inputs"></label>
+                    <button class="button js-choiceButton">Iniciar seu jogo</button>
+                </div>
+            </section>
+            <section class="main__word js-sectionWord">
+                <h2 class="sub-title js-clue"></h2>
+                <div class="container-word js-containerWord">
+
+                </div>
+            </section>
+        </section>
+
+        <section class="main__buttons">
+
+        </section>
     </main>
     
     <script type="module" src="Assets/Javascript/script.js"></script>
