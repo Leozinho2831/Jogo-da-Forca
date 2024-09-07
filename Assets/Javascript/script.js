@@ -89,7 +89,7 @@ function initGame(){
         const clueText = document.querySelector('.js-clue');
 
         if(itemClick == standardGameButton){
-
+            createButtons();
             // necessário chamar a função a parte para não chamar ela novamente e quebrar código
             const wordSelect = getWord();
             const wordSelectLowerCase = wordSelect.word.toLowerCase();
@@ -112,8 +112,9 @@ function initGame(){
                 }
             });
 
-        } else if(inputWord.value && inputClue.value){
-
+        } else if(inputWord.value && inputClue.value && Number(inputWord.value) === NaN){
+            createButtons();
+            
             sections[1].classList.remove(classSectionActive);
             sections[2].classList.add(classSectionActive);
 
@@ -141,22 +142,30 @@ function initGame(){
             inputWord.value = '';
             inputClue.value = '';
             
-        } else if(Number(inputWord.value) !== NaN){
-            alert('Não pode digitar números como palavra');
         } else if(inputWord.value == '' || inputClue.value == ''){
 
-            if(inputWord.value){
-                inputWord.style.cssText = 'border: 2px solid #FB566D; background-color: #FCD5DF;';
+            if(!inputWord.value){
+                inputWord.style.cssText = 'border: 2px solid #FB566D; background-color: #FFBDCE;';
             }
 
-            if(inputClue.value){
-                inputClue.style.cssText = 'border: 2px solid #FB566D; background-color: #FCD5DF;';
+            if(!inputClue.value){
+                inputClue.style.cssText = 'border: 2px solid #FB566D; background-color: #FFBDCE;';
             }
 
             alert('Preencha todos os dados');
 
             inputWord.onclick = () => inputWord.style.cssText = '';
             inputClue.onclick = () => inputClue.style.cssText = '';
+
+        } else if(Number(inputWord.value) !== NaN){
+
+            if(Number(inputWord.value) !== NaN){
+                inputWord.style.cssText = 'border: 2px solid #FB566D; background-color: #FFBDCE;';
+            }
+
+            inputWord.value = '';
+            inputWord.onclick = () => inputWord.style.cssText = '';
+            alert('Não pode digitar números como palavra');
         }
         
     }
@@ -183,10 +192,14 @@ function createButtons(){
     const containerButtons = document.querySelector('.js-containerButtons');
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
+    containerButtons.innerHTML = '';
+
     alphabet.split('').forEach((letter) => {
         containerButtons.innerHTML += 
-        `<button class="buttons-letters">${letter}</button>`;
+        `<button class="buttons-letters" onclick="clickedLetter(${letter})">${letter}</button>`;
     });
 }
 
-createButtons()
+// function clickedLetter(letter){
+
+// }
