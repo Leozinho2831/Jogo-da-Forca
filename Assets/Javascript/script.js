@@ -74,6 +74,9 @@ function initGame(){
                     </div>`;
                 } else if(wordLetter === ' '){
                     wordContainer.innerHTML += `<div></div>`
+                } else if(wordLetter == '-' || wordLetter == '_'){
+                    wordContainer.children[wordContainer.children.length - 1].innerHTML += 
+                    `<span class="letter js-letter correctLetter">${wordLetter}</span>`;
                 } else {
                     wordContainer.children[wordContainer.children.length - 1].innerHTML += 
                     `<span class="letter js-letter">${wordLetter}</span>`;
