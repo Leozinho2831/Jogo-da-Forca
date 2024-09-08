@@ -34,21 +34,6 @@
     --background-notification: rgba(0, 0, 0, 0.95);
 }
 
-body.dark{
-    --grey1: #0B0C12;
-    --grey2: #161922;
-    --grey9: #7E838C;
-    --grey11: #B2B8BF;
-    --grey12: #CED3D9;
-
-    --blue1: #8aa2e7;
-    --blue2: #0E2467;
-    --green1: #B9FDE1;
-    --green2: #035835;
-
-    --shadow: rgba(255, 255, 255, 0.1);
-}
-
 @keyframes visibilySection{
     0%{
         opacity: 0;
