@@ -29,40 +29,6 @@
     transition: all 0.2s ease-in-out;
 }
 
-.header ul li{
-    display: grid;
-}
-
-.header ul li > label{
-    display: inline-block;
-    width: 75px;
-    height: 35px;
-
-    background-color: var(--grey5);
-    border-radius: 30px;
-
-    position: relative;
-}
-
-.header ul li label > div{
-    width: 25px;
-    height: 25px;
-
-    border-radius: 100%;
-    background-color: var(--grey7);
-
-    position: absolute;
-    top: 5px;
-    left: 5px;
-
-    transform: translateX(0);
-    transition: all 0.2s ease-in-out;
-}
-
-.header ul li input:checked ~ label > div{
-    transform: translateX(40px);
-}
-
 .header__menu{
     display: flex;
     flex-direction: column;
