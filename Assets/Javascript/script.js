@@ -189,17 +189,11 @@ function clickedLetter(event){
         imagesExist++
     
         const containerImages = document.querySelector('.js-forcaContainer');
-        const classBody = 'dark';
     
         if(imagesExist < 7){
 
-            if(document.body.classList.contains(classBody)){
-                containerImages.innerHTML += 
-                `<img src="Assets/Images/img${imagesExist} dark.svg" alt="image${imagesExist}"></img>`;;
-            } else {
-                containerImages.innerHTML += 
-                `<img src="Assets/Images/img${imagesExist}.svg" alt="image${imagesExist}"></img>`;
-            }
+            containerImages.innerHTML += 
+            `<img src="Assets/Images/img${imagesExist}.svg" alt="image${imagesExist}"></img>`;
 
         }
 
