@@ -13,64 +13,6 @@ function initMenu(){
 
 initMenu();
 
-function initDarkMode(){
-    const inputCheckbox = document.querySelector('#checkbox');
-    const bodyItem = document.body;
-    const classBody = 'dark';
-    
-    const forcaImage = document.querySelector('.js-forcaContainer img:first-of-type');
-    const images = document.querySelectorAll('img[src^="Assets/Images/img"]');
-    
-    function darkModeActive(){
-        const darkModeActive = localStorage.getItem('darkMode');
-    
-        if(darkModeActive === 'true'){
-            inputCheckbox.checked = true;
-            bodyItem.classList.add(classBody);
-            
-            images.forEach((image, index) =>{
-    
-                image.src = `Assets/Images/img${index + 1} dark.svg`;
-                forcaImage.src = 'Assets/Images/Forca suporte dark.svg';
-                
-            });
-        } else {
-    
-            inputCheckbox.checked = false;
-            bodyItem.classList.remove(classBody);
-    
-        }
-    }
-    
-    darkModeActive();
-    
-    if(inputCheckbox){
-        function darkMode(){
-    
-            bodyItem.classList.toggle(classBody);
-    
-            images.forEach((image, index) =>{
-                if(bodyItem.classList.contains(classBody)){
-    
-                    image.src = `Assets/Images/img${index + 1} dark.svg`;
-                    forcaImage.src = 'Assets/Images/Forca suporte dark.svg';
-    
-                } else {
-    
-                    image.src = `Assets/Images/img${index + 1}.svg`;
-                    forcaImage.src = 'Assets/Images/Forca suporte.svg';
-                }
-            });
-    
-            localStorage.setItem('darkMode', inputCheckbox.checked);
-        }
-        
-        inputCheckbox.onchange = darkMode;
-    }
-}
-
-initDarkMode();
-
 function initGame(){
     const startButton = document.querySelector('.js-startButton');
     const standardGameButton = document.querySelector('.js-standardButton');
@@ -79,19 +21,19 @@ function initGame(){
     const sections = document.querySelectorAll('.js-section');
     const classSectionActive = 'activeSection';
 
+    const inputWord = document.querySelector('.js-inputWord');
+    const inputClue = document.querySelector('.js-inputClue');
+
     function startGame(event){
         const itemClick = event.target;
-
-        const inputWord = document.querySelector('.js-inputWord');
-        const inputClue = document.querySelector('.js-inputClue');
 
         const wordContainer = document.querySelector('.js-containerWord')
         const clueText = document.querySelector('.js-clue');
 
         if(itemClick == standardGameButton){
             const wordSelect = getWord();
-            const wordSelectLowerCase = wordSelect.word.toLowerCase();
-            const wordLetters = wordSelectLowerCase.split(/(?!$)/);
+            const wordSelectUpperCase = wordSelect.word.toUpperCase();
+            const wordLetters = wordSelectUpperCase.split(/(?!$)/);
             
             clueText.innerHTML = `<b>Dica:</b> ${wordSelect.clue}`;
 
@@ -112,14 +54,14 @@ function initGame(){
 
             createButtons();
 
-        } else if(inputWord.value && inputClue.value && Number(inputWord.value) === NaN){
+        } else if(inputWord.value && inputClue.value){
             
             sections[1].classList.remove(classSectionActive);
             sections[2].classList.add(classSectionActive);
 
             const word = inputWord.value;
-            const wordLowerCase = word.toLowerCase();
-            const wordLetters = wordLowerCase.split(/(?!$)/);
+            const wordUpperCase = word.toUpperCase();
+            const wordLetters = wordUpperCase.split(/(?!$)/);
 
             clueText.innerHTML = `<b>Dica:</b> ${inputClue.value}`;
 
@@ -128,7 +70,7 @@ function initGame(){
                 if(index == 0){
                     wordContainer.innerHTML += 
                     `<div>
-                        <span class="letter js-letter" word:${wordLetter}>${wordLetter}</span>
+                        <span class="letter js-letter">${wordLetter}</span>
                     </div>`;
                 } else if(wordLetter === ' '){
                     wordContainer.innerHTML += `<div></div>`
@@ -156,19 +98,17 @@ function initGame(){
 
             inputWord.onclick = () => inputWord.style.cssText = '';
             inputClue.onclick = () => inputClue.style.cssText = '';
-
-        } else if(Number(inputWord.value) !== NaN){
-
-            if(Number(inputWord.value) !== NaN){
-                inputWord.style.cssText = 'border: 2px solid #FB566D; background-color: #FFBDCE;';
-            }
-
-            inputWord.value = '';
-            inputWord.onclick = () => inputWord.style.cssText = '';
-            alert('Não pode digitar números como palavra');
         }
         
     }
+
+    inputWord.addEventListener('keypress', (event) =>{
+        const keyCode = (event.keyCode ? event.keyCode : event.wich);
+
+        if(keyCode > 47 && keyCode < 58){
+            event.preventDefault()
+        }
+    });
 
     startButton.onclick = () => {
         sections[0].classList.remove(classSectionActive);
@@ -210,7 +150,8 @@ function createButtons(){
 }
 
 let imagesExist = 0;
-    
+let correctLetters = 0;
+
 function clickedLetter(event){
     const lettersForca = document.querySelectorAll('.js-letter');
     const buttonClicked = event.target;
@@ -219,30 +160,70 @@ function clickedLetter(event){
     const classButtonIncorrect = 'incorrect';
 
     lettersForca.forEach((letterForca) => {
-        if(letterForca.textContent == buttonClicked.textContent){
-            console.log('sla')
+        const normalizedLetter = letterForca.textContent.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+
+        if(normalizedLetter == buttonClicked.textContent){
             letterForca.classList.add(classLetter)
             buttonClicked.classList.add(classButtonCorrect);
+
+            buttonClicked.onclick = null;
+            correctLetters++;
         }
     });
 
+    if(correctLetters == lettersForca.length){
+        const win = document.querySelector('.js-youWin');
+        const classWin = 'youWin';
+
+        win.classList.add(classWin);
+    }
+
     if(!buttonClicked.classList.contains(classButtonCorrect)){
+
         buttonClicked.classList.add(classButtonIncorrect);
+        buttonClicked.onclick = null;
+
         imagesExist++
     
         const containerImages = document.querySelector('.js-forcaContainer');
         const classBody = 'dark';
     
-        if(document.body.classList.contains(classBody)){
-            containerImages.innerHTML += 
-            `<img src="Assets/Images/img${imagesExist} dark.svg" alt="image${imagesExist}"></img>`;;
-        } else {
-            containerImages.innerHTML += 
-            `<img src="Assets/Images/img${imagesExist}.svg" alt="image${imagesExist}"></img>`;
+        if(imagesExist < 7){
+
+            if(document.body.classList.contains(classBody)){
+                containerImages.innerHTML += 
+                `<img src="Assets/Images/img${imagesExist} dark.svg" alt="image${imagesExist}"></img>`;;
+            } else {
+                containerImages.innerHTML += 
+                `<img src="Assets/Images/img${imagesExist}.svg" alt="image${imagesExist}"></img>`;
+            }
+
         }
 
-        if(imagesExist == 6){
-            
+        if(imagesExist > 6){
+            const lost = document.querySelector('.js-youLost');
+            const classLost = 'youLost';
+
+            lost.classList.add(classLost);
         }
     }
 }
+
+function initFinishGame(){
+    const buttonsRestart = document.querySelectorAll('.js-buttonRestart');
+    const closeNotification = document.querySelectorAll('.js-close');
+
+    buttonsRestart.forEach((buttonRestart) => {
+        buttonRestart.onclick = () => {
+            window.location.reload();
+        }
+    });
+
+    closeNotification.forEach((close) => {
+        close.onclick = () => {
+            window.location.reload();
+        }
+    });
+}
+
+initFinishGame();
